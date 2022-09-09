@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Col, Row } from 'react-bootstrap';
+import { Card, Col, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
@@ -15,16 +15,17 @@ import Project1 from '../components/Admin/Project1';
 import Project2 from '../components/Admin/Project2';
 import Project3 from '../components/Admin/Project3';
 import { allMainMenu } from '../actions/mainMenuActions';
+import ControlBarSideDynamic from '../components/ControlBar/ControlBarSideDynamic';
+import DashboardDynamic from '../components/Admin/DashboardDynamic';
+import MainMenuDynamic from '../components/Admin/MainMenuDynamic';
+import SideBar from '../components/ControlBar/SideBar';
 
 const AdminPageDynamic = ({ history, match }) => {
   const navigate = useNavigate();
   const params = useParams();
   const dispatch = useDispatch();
-  console.log(params);
-  console.log(window.location.pathname);
-  const opTitle = params.optitle;
 
-  console.log(opTitle);
+  const opTitle = params.optitle;
 
   const [urlInfoDynamic, setUrlInfoDynamic] = useState([
     { opTitle: 'dashboard', title: 'Dashboard', groupIndex: '0' },
@@ -46,60 +47,37 @@ const AdminPageDynamic = ({ history, match }) => {
       dispatch(allMainMenu());
     }
 
-    if (mainMenus && mainMenus.length !== 0) {
-      const tempItem = mainMenus.map((menu, i) => {
-        const set = {
+    if (mainMenus && mainMenus.length > 0) {
+      const set = [
+        {
+          opTitle: 'dashboard',
+          title: 'Dashboard',
+          groupIndex: '0',
+          menuId: '1',
+        },
+      ];
+
+      mainMenus.map((menu, i) => {
+        set.push({
           opTitle: menu.title.toLowerCase(),
           title: menu.title.toUpperCase(),
           groupIndex: i + Number(1),
-        };
-        return set;
+          menuId: menu.mainMenuId,
+        });
+        if (menu.subMenus && menu.subMenus.length !== 0) {
+          menu.subMenus.map((subMenu) => {
+            set.push({
+              opTitle: subMenu.title.toLowerCase(),
+              title: subMenu.title.toUpperCase(),
+              groupIndex: i + Number(1),
+              subMenuId: subMenu.subMenuId,
+            });
+          });
+        }
       });
-      console.log(tempItem);
-      tempItem.unshift({
-        opTitle: 'dashboard',
-        title: 'Dashboard',
-        groupIndex: '0',
-      });
-      console.log(tempItem);
-      setUrlInfoDynamic(tempItem);
+      setUrlInfoDynamic(set);
     }
   }, [dispatch, mainMenus]);
-
-  console.log(urlInfoDynamic);
-
-  const urlInfo = [
-    { opTitle: 'dashboard', title: 'Dashboard', groupIndex: '0' },
-    { opTitle: 'intro', title: 'Introduction', groupIndex: '1' },
-
-    // Orders ---
-    { opTitle: 'about', title: 'About-Us', groupIndex: '2' },
-
-    // users ---
-    { opTitle: 'contact', title: 'Contact-Us', groupIndex: '3' },
-    // { opTitle: 'useredit', title: 'User Edit', groupIndex: '3' },
-    // { opTitle: 'userdetail', title: 'User Detail', groupIndex: '3' },
-
-    // Product Utilities ---
-    { opTitle: 'projects', title: 'Projects', groupIndex: '4' },
-    { opTitle: 'project1', title: 'Project-Section-1', groupIndex: '4' },
-    { opTitle: 'project2', title: 'Project-Section-2', groupIndex: '4' },
-    { opTitle: 'project3', title: 'Project-Section-3', groupIndex: '4' },
-
-    // Settings ---
-    { opTitle: 'services', title: 'Services', groupIndex: '5' },
-  ];
-
-  // const opTitle = match.params.optitle;
-  // console.log(history);
-  // console.log(window.location);
-  // console.log(opTitle);
-
-  const query = window.location.search
-    ? window.location.search.split('=')
-    : null;
-
-  console.log(query);
 
   useEffect(() => {
     if (
@@ -153,7 +131,7 @@ const AdminPageDynamic = ({ history, match }) => {
                     maxHeight: '100%',
                   }}
                 >
-                  <ControlBarSide
+                  <ControlBarSideDynamic
                     infoBox={{
                       currentURL: window.location.pathname,
                       groupIndex: urlInfoBox.groupIndex,
@@ -194,26 +172,11 @@ const AdminPageDynamic = ({ history, match }) => {
 
                   // Inventory ---
                   opTitle === 'dashboard' ? (
-                    <Dashboard history={history} />
-                  ) : opTitle === 'intro' ? (
-                    <Introduction />
-                  ) : opTitle === 'about' ? (
-                    <About history={history} />
-                  ) : opTitle === 'contact' ? (
-                    <Contact history={history} />
-                  ) : // Projects ---
-                  opTitle === 'projects' ? (
-                    <Projects history={history} />
-                  ) : opTitle === 'project1' ? (
-                    <Project1 history={history} />
-                  ) : opTitle === 'project2' ? (
-                    <Project2 history={history} />
-                  ) : opTitle === 'project3' ? (
-                    <Project3 history={history} />
-                  ) : opTitle === 'services' ? (
-                    <Services history={history} />
+                    <DashboardDynamic history={history} />
                   ) : (
-                    <Dashboard history={history} />
+                    urlInfoBox.menuId !== '1' && (
+                      <MainMenuDynamic history={history} menu={urlInfoBox} />
+                    )
                   )
                   // Mail Box ---
                   // (opTitle === 'inbox') ? <AdminAnalytics1 /> :

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import ScrollToTop from '../components/Utils/ScrollToTopButton/ScrollToTop';
 
@@ -22,25 +22,42 @@ import Message from '../components/Message';
 import SectionProject2 from '../components/Projects/SectionProject2';
 import Projects from '../components/Projects/Projects';
 import ServicesD from '../components/Services/ServicesD';
+import { allMainMenu } from '../actions/mainMenuActions';
 
-const HomePage = () => {
+const HomePageD = () => {
   const dispatch = useDispatch();
+
+  const [projects, setProjects] = useState([]);
+  const [services, setServices] = useState([]);
   // const scrollToTop = () => {
   //   scroll.scrollToTop();
   // };
 
-  const projectAll = useSelector((state) => state.projectAll);
+  const mainMenuAll = useSelector((state) => state.mainMenuAll);
   const {
-    loading: projectAllLoading,
-    error: projectAllLoadingError,
-    projects,
-  } = projectAll;
+    loading: mainMenuAllLoading,
+    error: mainMenuAllLoadingError,
+    mainMenus,
+  } = mainMenuAll;
 
   useEffect(() => {
-    dispatch(allProject());
-  }, [dispatch]);
+    if (!mainMenus) {
+      dispatch(allMainMenu());
+    } else {
+      setProjects(
+        mainMenus.find(
+          (info) => info.mainMenuId === 'b8ea08d2-7ccb-4ac8-be23-bcbea28a5eaf'
+        )
+      );
+      setServices(
+        mainMenus.find(
+          (info) => info.mainMenuId === '9cafa497-5280-4edf-9e91-07e59ec03b8e'
+        )
+      );
+    }
+  }, [dispatch, mainMenus]);
 
-  console.log(projects);
+  console.log(mainMenus);
 
   return (
     <div>
@@ -48,7 +65,7 @@ const HomePage = () => {
       <Header />
       <Introduction />
       {/* Project 1 */}
-      <Projects />
+      {projects && projects.length !== 0 && <Projects projects={projects} />}
       {/* {projectAllLoading ? (
         <Loader />
       ) : projectAllLoadingError ? (
@@ -81,7 +98,7 @@ const HomePage = () => {
       {/* end of basic-5 */}
       {/* end of process */}
       {/* Services */}
-      <ServicesD />
+      {services && services.length !== 0 && <ServicesD services={services} />}
       {/* end of cards-1 */}
       {/* end of services */}
       {/* About */}
@@ -114,4 +131,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default HomePageD;

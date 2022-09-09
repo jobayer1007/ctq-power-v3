@@ -51,7 +51,7 @@ export const subMenuCatAllReducer = (state = { subMenuCats: [] }, action) => {
   }
 };
 
-export const subMenuCatByIdReducer = (state = { subMenuCat: {} }, action) => {
+export const subMenuCatByIdReducer = (state = {}, action) => {
   switch (action.type) {
     case SUB_MENU_CAT_BY_ID_REQUEST:
       return { ...state, loading: true };

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Card, Navbar, Nav, Accordion, Image } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+
+import { allMainMenu } from '../../actions/mainMenuActions';
 
 const StylesCBS1 = styled.div`
   position: sticky;
@@ -67,11 +69,16 @@ const StylesCBS1 = styled.div`
 `;
 
 const ControlBarSideDynamic = ({ infoBox }) => {
+  const dispatch = useDispatch();
   const [hideHtitle, setHideHtitle] = useState(false);
   const [currentURL, setCurrentURL] = useState('');
 
   const mainMenuAll = useSelector((state) => state.mainMenuAll);
   const { mainMenus } = mainMenuAll;
+
+  useEffect(() => {
+    dispatch(allMainMenu());
+  }, [dispatch]);
 
   useEffect(() => {
     setCurrentURL(infoBox.currentURL);
@@ -131,14 +138,13 @@ const ControlBarSideDynamic = ({ infoBox }) => {
             </Link>
           </Accordion.Item> */}
                   <Accordion.Item eventKey={i + 1} key={i + menu.mainMenuId}>
-                    <Accordion.Header>
-                      <div className='font-div-cbs1'>
-                        <i className='fas fa-warehouse'></i>
-                      </div>
-                      {!hideHtitle && (
-                        <div className='htitle-div-cbs1'>{menu.title}</div>
-                      )}
-                    </Accordion.Header>
+                    <LinkContainer to={`/admin/${menu.title.toLowerCase()}`}>
+                      <Accordion.Header>
+                        {!hideHtitle && (
+                          <div className='htitle-div-cbs1'>{menu.title}</div>
+                        )}
+                      </Accordion.Header>
+                    </LinkContainer>
                     <Accordion.Body>
                       <Navbar variant='dark'>
                         <Nav
@@ -163,113 +169,6 @@ const ControlBarSideDynamic = ({ infoBox }) => {
                       </Navbar>
                     </Accordion.Body>
                   </Accordion.Item>
-                  ){/* --- Inventory - */}
-                  {/* ------- Mail Box --------- */}
-                  {/* <Accordion.Item eventKey='3'>
-                        <Accordion.Header>
-                            <div className='font-div-cbs1'>
-                                <i className='far fa-envelope'></i>
-                            </div>
-                            {!hideHtitle &&
-                                <div className='htitle-div-cbs1'>
-                                    Mail Box
-                                </div>
-                            }
-                        </Accordion.Header>
-                        <Accordion.Body>
-                            <Navbar variant='dark' >
-                                <Nav
-                                    defaultActiveKey={infoBox.currentURL}
-                                    className='flex-column'
-                                >
-                                    <LinkContainer to='/admin/inbox'><Nav.Link>Inbox</Nav.Link></LinkContainer>
-                                    <LinkContainer to='/admin/viewmail'><Nav.Link>View Mail</Nav.Link></LinkContainer>
-                                    <LinkContainer to='/admin/composemail'><Nav.Link>Compose Mail</Nav.Link></LinkContainer>
-                                </Nav>
-                            </Navbar>
-                            <h1>Mail Box</h1>
-                        </Accordion.Body>
-                    </Accordion.Item> */}
-                  {/* ------- Form Elements --------- */}
-                  {/* <Accordion.Item eventKey='3'>
-                        <Accordion.Header>
-                            <div className='font-div-cbs1'>
-                                <i className='fas fa-indent'></i>
-                            </div>
-                            {!hideHtitle &&
-                                <div className='htitle-div-cbs1'>
-                                    Form Elements
-                                </div>
-                            }
-                        </Accordion.Header>
-                        <Accordion.Body>
-                            <h1>Form Elements</h1>
-                        </Accordion.Body>
-                    </Accordion.Item> */}
-                  {/* ------- Interface --------- */}
-                  {/* <Accordion.Item eventKey='2'>
-                        <Accordion.Header>
-                            <div className='font-div-cbs1'>
-                                <i className='fas fa-puzzle-piece'></i>
-                            </div>
-                            {!hideHtitle &&
-                                <div className='htitle-div-cbs1'>
-                                    Interface
-                                </div>
-                            }
-                        </Accordion.Header>
-                        <Accordion.Body>
-                            <h1>Interface</h1>
-                        </Accordion.Body>
-                    </Accordion.Item> */}
-                  {/* ------- Miscellaneous --------- */}
-                  {/* <Accordion.Item eventKey='3'>
-                        <Accordion.Header>
-                            <div className='font-div-cbs1'>
-                                <i className='fas fa-chart-pie'></i>
-                            </div>
-                            {!hideHtitle &&
-                                <div className='htitle-div-cbs1'>
-                                    Miscellaneous
-                                </div>
-                            }
-                        </Accordion.Header>
-                        <Accordion.Body>
-                            <h1>Miscellaneous</h1>
-                        </Accordion.Body>
-                    </Accordion.Item> */}
-                  {/* ------- Charts --------- */}
-                  {/* <Accordion.Item eventKey='4'>
-                        <Accordion.Header>
-                            <div className='font-div-cbs1'>
-                                <i className='fas fa-chart-line'></i>
-                            </div>
-                            {!hideHtitle &&
-                                <div className='htitle-div-cbs1'>
-                                    Charts
-                                </div>
-                            }
-                        </Accordion.Header>
-                        <Accordion.Body>
-                            <h1>Charts</h1>
-                        </Accordion.Body>
-                    </Accordion.Item> */}
-                  {/* ------- Data Tables --------- */}
-                  {/* <Accordion.Item eventKey='5'>
-                        <Accordion.Header>
-                            <div className='font-div-cbs1'>
-                                <i className='fas fa-table'></i>
-                            </div>
-                            {!hideHtitle &&
-                                <div className='htitle-div-cbs1'>
-                                    Data Tables
-                                </div>
-                            }
-                        </Accordion.Header>
-                        <Accordion.Body>
-                            <h1>Data Tables</h1>
-                        </Accordion.Body>
-                    </Accordion.Item> */}
                 </Accordion>
               ) : (
                 <Navbar variant='dark'>

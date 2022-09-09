@@ -51,7 +51,7 @@ export const subMenuAllReducer = (state = { subMenus: [] }, action) => {
   }
 };
 
-export const subMenuByIdReducer = (state = { subMenu: {} }, action) => {
+export const subMenuByIdReducer = (state = {}, action) => {
   switch (action.type) {
     case SUB_MENU_BY_ID_REQUEST:
       return { ...state, loading: true };

@@ -1,5 +1,5 @@
 const asyncHandler = require('express-async-handler');
-const { SubMenu, SubMenuCat } = require('../models/index');
+const { SubMenu, SubMenuCat, SubMenuAt } = require('../models/index');
 const models = require('../models/index');
 
 // @desc    Create a new Sub-Menu     ///////////////////////////////////////////////
@@ -56,6 +56,14 @@ exports.subMenuById = asyncHandler(async (req, res) => {
   const { id } = req.params;
   const subMenu = await models.SubMenu.findOne({
     where: { subMenuId: id },
+    include: [
+      {
+        model: SubMenuCat,
+      },
+      {
+        model: SubMenuAt,
+      },
+    ],
   });
 
   if (subMenu) {
@@ -83,7 +91,7 @@ exports.updateSubMenuById = asyncHandler(async (req, res) => {
     };
 
     let { title, details, image } = data;
-    const updatedsubMenu = await models.subMenu.update(
+    const updatedsubMenu = await models.SubMenu.update(
       {
         title,
         details,

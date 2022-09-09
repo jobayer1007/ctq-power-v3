@@ -38,7 +38,7 @@ Colors:
 
 main {
   min-height: 90vh;
-  background: linear-gradient(#141e30, #243b55);
+  background: linear-gradient(#141e30, #2b4c72);
 }
 
 .main-content {
@@ -1769,3 +1769,8 @@ a:hover {
 }
 
 /* end of min-width 1200px */
+
+ul {
+  text-decoration: none;
+  list-style: none;
+}
