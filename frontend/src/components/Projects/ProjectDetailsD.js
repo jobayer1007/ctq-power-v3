@@ -52,12 +52,13 @@ const ProjectDetailsD = () => {
               <div className='container'>
                 {subMenu.details && parse(subMenu.details)}
 
-                <hr />
+                <br />
 
                 {subMenu.subMenuAts
                   ? subMenu.subMenuAts.map((data, i) => (
                       <div className='container' key={i}>
                         <h5 className='text-center'>{data.title}</h5>
+                        <hr />
                         {data.image && <Image fluid src={data.image} />}
                         <hr />
                         {data.details && parse(data.details)}

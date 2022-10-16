@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import parse from 'html-react-parser';
+
 import { getMainMenuById } from '../../actions/mainMenuActions';
 import Loader from '../Loader';
 import Message from '../Message';
@@ -27,8 +29,8 @@ const Projects = ({ projects }) => {
     <>
       <div className='row bg-light text-center'>
         <div className='col-lg-12'>
-          <h2 className='h2-heading'>Projects</h2>
-          <p className='p-heading'>project list</p>
+          <h2 className='h2-heading'>PROJECTS</h2>
+          <p className='p-heading'>{parse(projects.details)}</p>
           <Button
             variant='transparent'
             className='btn btn-outline-success'

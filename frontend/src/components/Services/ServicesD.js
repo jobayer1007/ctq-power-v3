@@ -16,12 +16,11 @@ const ServicesD = ({ services }) => {
     navigate(`/project/${id}`);
   };
   return (
-    <div id='services' className='cards-1 bg-gray text-center'>
+    <div id='services' className='cards-1 bg-gray text-center p-0'>
       <div className='container'>
         <ServiceHeader service={services} />
-        {/* end of row */}
         <div className='row'>
-          <div className='col-lg-12'>
+          <div className='col-lg-12 card-group'>
             {/* Card */}
             {services.subMenus && services.subMenus.length !== 0 ? (
               services.subMenus.map((item, i) => (
@@ -35,8 +34,8 @@ const ServicesD = ({ services }) => {
                   </div>
                   <div className='card-body'>
                     <h4 className='card-title'>{item.title}</h4>
-                    <div className='card-text'>
-                      {parse(item.details.substring(0, 100))} <br />
+                    <div className='card-text justify-content-start'>
+                      {parse(item.details.substring(0, 300))} <br />
                       <span>
                         <button
                           className='read-more no-line green btn'

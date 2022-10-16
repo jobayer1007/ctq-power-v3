@@ -11,7 +11,7 @@ const Header = () => {
               <h1 className='h1-large'>
                 PLAN
                 <br /> DESIGN
-                <br /> PROGRESS
+                <br /> Evaluate Reliability
               </h1>
             </div>{' '}
             {/* end of col */}

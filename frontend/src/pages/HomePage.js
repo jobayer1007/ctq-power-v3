@@ -48,7 +48,7 @@ const HomePage = () => {
       <Header />
       <Introduction />
       {/* Project 1 */}
-      <Projects />
+      {/* <Projects /> */}
       {/* {projectAllLoading ? (
         <Loader />
       ) : projectAllLoadingError ? (

@@ -129,17 +129,13 @@ const NavbarDynamic = () => {
                 Home
               </Scrolllink>
             </li>
-            <li className='nav-item'>
-              {/* <a className='nav-link' href='#projects'>
-                Projects
-              </a> */}
-              <Scrolllink
+            {/* <li className='nav-item'>
+             <Scrolllink
                 className='nav-link'
                 activeClass='active'
                 to='projects'
                 spy={true}
                 smooth={true}
-                // offset={-70}
                 duration={500}
                 onClick={() => {
                   scrollToPage('projects');
@@ -148,8 +144,7 @@ const NavbarDynamic = () => {
               >
                 Projects
               </Scrolllink>
-              {/* <div onClick={() => scrollToPage('projects')}>Projects</div> */}
-            </li>
+            </li> */}
             {/* <li className='nav-item'>
               <Link className='nav-link' href='/articles'>
                 Article

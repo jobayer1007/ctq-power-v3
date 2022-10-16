@@ -8,11 +8,23 @@ const Footer = () => {
           <div className='row'>
             <div className='col-lg-12'>
               <div className='footer-col first'>
-                <h6>About CTQ</h6>
+                <h6>About CTQ, LLC</h6>
                 <p className='p-small'>
-                  He oppose at thrown desire of no. Announcing impression
-                  unaffected day his are unreserved indulgence. Him hard find
-                  read are you
+                  CTQ, LLC is a registered company in the state of Virginia in
+                  the USA and is providing services on Power system studies in
+                  steady state (RMS) and in Electro-Magnetic Transient (EMT)
+                  domains using the world best software PSSE, PSCAD and others
+                  with its’ industry expert professional team. Other services
+                  include Substation Design (Primary & secondary) Services [both
+                  for AIS & GIS] substation, ground/earthing calculation using
+                  world best software on grounding—CDEGS. We are associated with
+                  our North American Partners and have professionals educated
+                  and trained in North America and Bangladesh as well. Customer
+                  satisfaction has been our pride so far and we are highly
+                  confident that we can meet the requirement on substation
+                  design & Power system Studies of any complexities . CTQ also
+                  has a sister company in Bangladesh called CTQ Ltd located in
+                  Dhaka.
                 </p>
               </div>
               {/* end of footer-col */}
@@ -75,8 +87,8 @@ const Footer = () => {
                 </span>
                 <p className='p-small'>
                   We would love to hear from you{' '}
-                  <a href='mailto:contact.us@goctq.com'>
-                    <strong>contact.us@goctq.com</strong>
+                  <a href='mailto:mizan.rahman@goctq.com'>
+                    <strong>mizan.rahman@goctq.com</strong>
                   </a>
                 </p>
               </div>

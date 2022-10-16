@@ -6,25 +6,36 @@ const Introduction = () => {
       <div className='container'>
         <div className='row'>
           <div className='col-lg-6'>
-            <h1>We help companies create and develop technologies</h1>
-          </div>{' '}
-          {/* end of col */}
+            <h1>
+              We help power industry with tailored solutions to meet the
+              challenges and economic pressures
+            </h1>
+          </div>
           <div className='col-lg-6'>
             <div className='text-container'>
               <p>
-                <strong>Planing</strong> led ask possible mistress relation
-                elegance eat likewise debatin. By message or am nothing amongst
-                chiefly address of research
+                <strong>Planning</strong> for power systems is essentially a
+                projection of how the system should grow over a specific period
+                of time, given certain assumptions and judgment about the future
+                loads and the size of investment in generating capacity
+                additions and transmission facilities expansion and
+                reinforcements.
               </p>
               <p>
-                <strong>Designing</strong> the its enable direct men depend
-                highly. Ham windows sixte who inquiry fortune demands. Is be
-                force upon and of course
+                <strong>Designing</strong> solves challenges which are related
+                to design and development to ensure that they are economical,
+                safe and reliable. This also includes electrical layouts,
+                lighting, earthing and voltage drop.
               </p>
               <p>
-                <strong>Development</strong> sang fond must shew. Really boy law
-                county she unable her sister. Feet you off its. Among are leave
-                law built now
+                <strong>Reliability Evaluation</strong> is one of the most
+                important criteria which must be taken into consideration during
+                all phases of power system planning, design and operation.
+                Reliability criterion is required to establish target
+                reliability levels and to consistently analyze and compare the
+                future reliability levels with feasible alternative expansion
+                plans. This need has resulted in the development of
+                comprehensive reliability evaluation and modeling techniques.
               </p>
             </div>{' '}
             {/* end of text-container */}

@@ -11,7 +11,7 @@ const storage = multer.diskStorage({
     if (process.env.NODE_ENV === 'development') {
       cb(null, 'uploads/');
     } else {
-      cb(null, '/home/garbalife/apps/garbalife-app/uploads/');
+      cb(null, '/home/ctqpower/apps/ctqpower-app/uploads/');
     }
   },
   filename(req, file, cb) {

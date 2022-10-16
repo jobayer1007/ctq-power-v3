@@ -8,21 +8,23 @@ const Contact = () => {
           <div className='col-lg-12'>
             <h2 className='h2-heading'>Let us know about your project</h2>
             <p className='p-heading'>
-              Of will at sell well at as. Too want but tall nay like old
-              removing yourself today
+              If you would like to start a project or obtain a quote for one of
+              our services, drop an email to
             </p>
             <ul className='list-unstyled li-space-lg'>
               <li>
-                <i className='fas fa-map-marker-alt' /> &nbsp;22 Innovative, San
-                Francisco, CA 94043, US
+                <i className='fas fa-map-marker-alt' /> &nbsp;315 Beall Avenue,
+                Rockville, MD 20805
               </li>
               <li>
                 <i className='fas fa-phone' /> &nbsp;
-                <a href='tel:00817202212'>+81 720 2212</a>
+                <a href='tel: (216) 346 5520'> (216) 346 5520</a>
               </li>
               <li>
                 <i className='fas fa-envelope' /> &nbsp;
-                <a href='mailto:contact.us@goctq.com'>contact.us@goctq.com</a>
+                <a href='mailto:mizan.rahman@goctq.com'>
+                  mizan.rahman@goctq.com
+                </a>
               </li>
             </ul>
           </div>{' '}

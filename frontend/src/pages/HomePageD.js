@@ -65,7 +65,7 @@ const HomePageD = () => {
       <Header />
       <Introduction />
       {/* Project 1 */}
-      {projects && projects.length !== 0 && <Projects projects={projects} />}
+      {/* {projects && projects.length !== 0 && <Projects projects={projects} />} */}
       {/* {projectAllLoading ? (
         <Loader />
       ) : projectAllLoadingError ? (
