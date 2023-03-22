@@ -1,10 +1,10 @@
-const Sequelize = require('sequelize');
+const Sequelize = require("sequelize");
 
-const asyncHandler = require('express-async-handler');
-const bcrypt = require('bcryptjs'); // not installed yet
+const asyncHandler = require("express-async-handler");
+const bcrypt = require("bcryptjs"); // not installed yet
 
-const models = require('../models/index');
-const { generateToken, passwordResetToken } = require('../utils/generateToken');
+const models = require("../models/index");
+const { generateToken, passwordResetToken } = require("../utils/generateToken");
 
 ///////////////////////////////////////////DEV ONLY////////////////////////////////////
 
@@ -13,8 +13,8 @@ const sequelize = new Sequelize(
   process.env.PG_USER,
   process.env.PG_PASSWORD,
   {
-    host: 'localhost',
-    dialect: 'postgres',
+    host: "localhost",
+    dialect: "postgres",
 
     pool: {
       max: 5,
@@ -43,24 +43,25 @@ exports.registerSystemAdmin = asyncHandler(async (req, res) => {
           email,
           password: bcrypt.hashSync(password, 10),
           userName,
+          // userRole: "admin",  // turn it on while registering a new user as admin. Use postman to create user
         },
         { transaction: t }
       );
 
       await t.commit();
-      res.status(201).json('SystemAdmin has been Created Successfully.');
+      res.status(201).json("SystemAdmin has been Created Successfully.");
     } catch (error) {
       await t.rollback();
       res
         .status(400)
         .send(
-          'msg: Encountered a problem while creating SystemAdmin, error:' +
+          "msg: Encountered a problem while creating SystemAdmin, error:" +
             error
         );
     }
   } else {
     res.status(400);
-    throw new Error('User Already Exists');
+    throw new Error("User Already Exists");
   }
 });
 
@@ -81,7 +82,7 @@ exports.authUser = asyncHandler(async (req, res) => {
 
     if (!passwordIsValid) {
       res.status(400);
-      throw new Error('Invalid Password!');
+      throw new Error("Invalid Password!");
     } else {
       await models.User.update(
         {
@@ -104,7 +105,7 @@ exports.authUser = asyncHandler(async (req, res) => {
     }
   } else {
     res.status(404);
-    throw new Error('Invalid User');
+    throw new Error("Invalid User");
   }
 });
 
@@ -113,7 +114,7 @@ exports.authUser = asyncHandler(async (req, res) => {
 // @access  Private/admin
 exports.getUsers = asyncHandler(async (req, res) => {
   const users = await models.User.findAll({
-    attributes: { exclude: ['password'] },
+    attributes: { exclude: ["password"] },
     // include: [
     // { model: UserAddress, attributes: ['userAddressId'] },
     // { model: Order, attributes: ['orderId'] },
@@ -123,7 +124,7 @@ exports.getUsers = asyncHandler(async (req, res) => {
     res.json(users);
   } else {
     res.status(404);
-    throw new Error('No User');
+    throw new Error("No User");
   }
 });
 
@@ -134,13 +135,13 @@ exports.getUserById = asyncHandler(async (req, res) => {
   const user = await models.User.findOne({
     where: { userId: req.params.id },
     // include: [{ model: UserAddress }, { model: Order }],
-    attributes: { exclude: ['password'] },
+    attributes: { exclude: ["password"] },
   });
 
   if (user) {
     res.json(user);
   } else {
     res.status(404);
-    throw new Error('User not found');
+    throw new Error("User not found");
   }
 });

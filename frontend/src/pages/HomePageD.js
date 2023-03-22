@@ -1,28 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
-import ScrollToTop from '../components/Utils/ScrollToTopButton/ScrollToTop';
+import ScrollToTop from "../components/Utils/ScrollToTopButton/ScrollToTop";
 
-import About from '../components/About/About';
-import Contact from '../components/Contact/Contact';
-import Footer from '../components/Footer/Footer';
-import Header from '../components/Header/Header';
-import Introduction from '../components/Introduction/Introduction';
+import About from "../components/About/About";
+import Contact from "../components/Contact/Contact";
+import Footer from "../components/Footer/Footer";
+import Header from "../components/Header/Header";
+import Introduction from "../components/Introduction/Introduction";
 // import Navbar from '../components/Navbar/Navbar';
-import Process from '../components/Process/Process';
-import SectionProject3 from '../components/Projects/SectionProject3';
-import Services from '../components/Services/Services';
-import Team from '../components/Team/Team';
-import Testimonials from '../components/Testimonials/Testimonials';
-import Navbar1 from '../components/Navbar/Navbar1';
-import SectionProject1 from '../components/Projects/SectionProject1';
-import { useDispatch, useSelector } from 'react-redux';
-import { allProject } from '../actions/projectActions';
-import Loader from '../components/Loader';
-import Message from '../components/Message';
-import SectionProject2 from '../components/Projects/SectionProject2';
-import Projects from '../components/Projects/Projects';
-import ServicesD from '../components/Services/ServicesD';
-import { allMainMenu } from '../actions/mainMenuActions';
+import Process from "../components/Process/Process";
+import SectionProject3 from "../components/Projects/SectionProject3";
+import Services from "../components/Services/Services";
+import Team from "../components/Team/Team";
+import Testimonials from "../components/Testimonials/Testimonials";
+import Navbar1 from "../components/Navbar/Navbar1";
+import SectionProject1 from "../components/Projects/SectionProject1";
+import { useDispatch, useSelector } from "react-redux";
+import { allProject } from "../actions/projectActions";
+import Loader from "../components/Loader";
+import Message from "../components/Message";
+import SectionProject2 from "../components/Projects/SectionProject2";
+import Projects from "../components/Projects/Projects";
+import ServicesD from "../components/Services/ServicesD";
+import { allMainMenu } from "../actions/mainMenuActions";
 
 const HomePageD = () => {
   const dispatch = useDispatch();
@@ -46,12 +46,12 @@ const HomePageD = () => {
     } else {
       setProjects(
         mainMenus.find(
-          (info) => info.mainMenuId === 'b8ea08d2-7ccb-4ac8-be23-bcbea28a5eaf'
+          (info) => info.mainMenuId === "e9a7c9a4-66cb-468d-9a64-d563faa149d6"
         )
       );
       setServices(
         mainMenus.find(
-          (info) => info.mainMenuId === '9cafa497-5280-4edf-9e91-07e59ec03b8e'
+          (info) => info.mainMenuId === "3bd69a01-adc4-4959-9bd9-d204ee01a1b2"
         )
       );
     }
@@ -65,7 +65,7 @@ const HomePageD = () => {
       <Header />
       <Introduction />
       {/* Project 1 */}
-      {/* {projects && projects.length !== 0 && <Projects projects={projects} />} */}
+      {projects && projects.length !== 0 && <Projects projects={projects} />}
       {/* {projectAllLoading ? (
         <Loader />
       ) : projectAllLoadingError ? (

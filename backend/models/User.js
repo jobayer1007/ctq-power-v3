@@ -1,8 +1,8 @@
-const { Sequelize } = require('sequelize');
+const { Sequelize } = require("sequelize");
 
 const User = (sequelize, DataTypes) =>
   sequelize.define(
-    'user',
+    "user",
     {
       userId: {
         type: DataTypes.UUID,
@@ -19,7 +19,7 @@ const User = (sequelize, DataTypes) =>
       },
       userRole: {
         type: DataTypes.STRING,
-        defaultValue: 'user',
+        defaultValue: "user",
         required: true,
         allowNull: false,
         notEmpty: true,
@@ -47,7 +47,7 @@ const User = (sequelize, DataTypes) =>
       indexes: [
         {
           unique: true,
-          fields: ['email'],
+          fields: ["email"],
         },
       ],
     }

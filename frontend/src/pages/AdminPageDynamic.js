@@ -1,24 +1,24 @@
-import React, { useEffect, useState } from 'react';
-import { Card, Col, Row } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-import ControlBarSide from '../components/ControlBar/ControlBarSide';
-import ControlBarTop from '../components/ControlBar/ControlBarTop';
-import Dashboard from '../components/Admin/Dashboard';
-import Introduction from '../components/Admin/Introduction';
-import About from '../components/Admin/About';
-import Contact from '../components/Admin/Contact';
-import Projects from '../components/Admin/Projects';
-import Services from '../components/Admin/Services';
-import Project1 from '../components/Admin/Project1';
-import Project2 from '../components/Admin/Project2';
-import Project3 from '../components/Admin/Project3';
-import { allMainMenu } from '../actions/mainMenuActions';
-import ControlBarSideDynamic from '../components/ControlBar/ControlBarSideDynamic';
-import DashboardDynamic from '../components/Admin/DashboardDynamic';
-import MainMenuDynamic from '../components/Admin/MainMenuDynamic';
-import SideBar from '../components/ControlBar/SideBar';
+import React, { useEffect, useState } from "react";
+import { Card, Col, Row } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import ControlBarSide from "../components/ControlBar/ControlBarSide";
+import ControlBarTop from "../components/ControlBar/ControlBarTop";
+import Dashboard from "../components/Admin/Dashboard";
+import Introduction from "../components/Admin/Introduction";
+import About from "../components/Admin/About";
+import Contact from "../components/Admin/Contact";
+import Projects from "../components/Admin/Projects";
+import Services from "../components/Admin/Services";
+import Project1 from "../components/Admin/Project1";
+import Project2 from "../components/Admin/Project2";
+import Project3 from "../components/Admin/Project3";
+import { allMainMenu } from "../actions/mainMenuActions";
+import ControlBarSideDynamic from "../components/ControlBar/ControlBarSideDynamic";
+import DashboardDynamic from "../components/Admin/DashboardDynamic";
+import MainMenuDynamic from "../components/Admin/MainMenuDynamic";
+import SideBar from "../components/ControlBar/SideBar";
 
 const AdminPageDynamic = ({ history, match }) => {
   const navigate = useNavigate();
@@ -28,7 +28,7 @@ const AdminPageDynamic = ({ history, match }) => {
   const opTitle = params.optitle;
 
   const [urlInfoDynamic, setUrlInfoDynamic] = useState([
-    { opTitle: 'dashboard', title: 'Dashboard', groupIndex: '0' },
+    { opTitle: "dashboard", title: "Dashboard", groupIndex: "0" },
   ]);
   const [urlInfoBox, setUrlInfoBox] = useState({});
   const [showSideCntrlBar, setShowSideCntrlBar] = useState(true);
@@ -50,10 +50,10 @@ const AdminPageDynamic = ({ history, match }) => {
     if (mainMenus && mainMenus.length > 0) {
       const set = [
         {
-          opTitle: 'dashboard',
-          title: 'Dashboard',
-          groupIndex: '0',
-          menuId: '1',
+          opTitle: "dashboard",
+          title: "Dashboard",
+          groupIndex: "0",
+          menuId: "1",
         },
       ];
 
@@ -82,32 +82,35 @@ const AdminPageDynamic = ({ history, match }) => {
   useEffect(() => {
     if (
       userInfo &&
-      (userInfo.userRole === 'admin' || userInfo.userRole === 'systemAdmin')
+      (userInfo.userRole === "admin" || userInfo.userRole === "systemAdmin")
     ) {
       if (opTitle && urlInfoDynamic) {
         const infoBox = urlInfoDynamic.find((info) => info.opTitle === opTitle);
         if (infoBox) {
           setUrlInfoBox(infoBox);
         } else {
-          navigate('/admin/dashboard');
+          navigate("/admin/dashboard");
         }
       } else {
-        navigate('/admin/dashboard');
+        navigate("/admin/dashboard");
       }
     } else {
-      navigate('/login');
+      navigate("/login");
     }
   }, [history, userInfo, opTitle, navigate]);
+
+  console.log({ mainMenus });
+  console.log({ urlInfoDynamic });
 
   return (
     <main>
       <>
         {userInfo &&
-        (userInfo.userRole === 'admin' ||
-          userInfo.userRole === 'systemAdmin') &&
+        (userInfo.userRole === "admin" ||
+          userInfo.userRole === "systemAdmin") &&
         opTitle &&
         urlInfoBox ? (
-          <div className='main-content pt-5'>
+          <div className="main-content pt-5">
             {/*--- Control Bar Top 1 ---*/}
             {/* <ControlBarTop
               infoBox={{
@@ -119,16 +122,16 @@ const AdminPageDynamic = ({ history, match }) => {
               setShowSideCntrlBar={setShowSideCntrlBar}
             /> */}
 
-            <Row className='m-0' style={{ minHeight: '100vh' }}>
+            <Row className="m-0" style={{ minHeight: "100vh" }}>
               {/*--- Control Bar Side 1 ---*/}
               {showSideCntrlBar && (
                 <Col
-                  className='p-0 bg-black border-top border-end border-dark border-3'
+                  className="p-0 bg-black border-top border-end border-dark border-3"
                   style={{
-                    minWidth: 'fit-content',
-                    maxWidth: 'fit-content',
-                    minHeight: '100%',
-                    maxHeight: '100%',
+                    minWidth: "fit-content",
+                    maxWidth: "fit-content",
+                    minHeight: "100%",
+                    maxHeight: "100%",
                   }}
                 >
                   <ControlBarSideDynamic
@@ -142,12 +145,12 @@ const AdminPageDynamic = ({ history, match }) => {
               )}
 
               <Col
-                className='p-3'
+                className="p-3"
                 style={{
-                  width: '50%',
-                  maxWidth: '100%',
-                  minHeight: '100%',
-                  maxHeight: '100%',
+                  width: "50%",
+                  maxWidth: "100%",
+                  minHeight: "100%",
+                  maxHeight: "100%",
                 }}
               >
                 {/*--- Control Bar Top 2 ---*/}
@@ -171,10 +174,10 @@ const AdminPageDynamic = ({ history, match }) => {
                   // ) :
 
                   // Inventory ---
-                  opTitle === 'dashboard' ? (
+                  opTitle === "dashboard" ? (
                     <DashboardDynamic history={history} />
                   ) : (
-                    urlInfoBox.menuId !== '1' && (
+                    urlInfoBox.menuId !== "1" && (
                       <MainMenuDynamic history={history} menu={urlInfoBox} />
                     )
                   )
@@ -189,8 +192,8 @@ const AdminPageDynamic = ({ history, match }) => {
             </Row>
           </div>
         ) : (
-          <div className='d-flex align-items-center justify-content-center main-content'>
-            <h1 className='text-center text-light'>
+          <div className="d-flex align-items-center justify-content-center main-content">
+            <h1 className="text-center text-light">
               Upps! Something went wrong!
             </h1>
           </div>
