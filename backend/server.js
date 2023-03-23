@@ -66,6 +66,8 @@ app.use("/api/scat", scattributeRoutes);
 
 app.use("/uploads", express.static(path.join(path.resolve(), "/uploads")));
 
+console.log(path.join(path.resolve(), "/uploads"));
+
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(path.resolve(), "/frontend/build")));
 

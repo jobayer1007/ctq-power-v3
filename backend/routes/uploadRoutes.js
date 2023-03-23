@@ -1,6 +1,6 @@
-const express = require('express');
-const path = require('path');
-const multer = require('multer');
+const express = require("express");
+const path = require("path");
+const multer = require("multer");
 
 const router = express.Router();
 
@@ -8,10 +8,10 @@ const router = express.Router();
 
 const storage = multer.diskStorage({
   destination(req, file, cb) {
-    if (process.env.NODE_ENV === 'development') {
-      cb(null, 'uploads/');
+    if (process.env.NODE_ENV === "development") {
+      cb(null, "uploads/");
     } else {
-      cb(null, '/home/ctqpower/apps/ctqpower-app/uploads/');
+      cb(null, "/home/ctqpower/apps/ctq-power/uploads/");
     }
   },
   filename(req, file, cb) {
@@ -33,7 +33,7 @@ function checkFileType(file, cb) {
   if (extname && mimetype) {
     return cb(null, true);
   } else {
-    cb('Images or pdf Only!');
+    cb("Images or pdf Only!");
   }
 }
 
@@ -44,7 +44,7 @@ const upload = multer({
   },
 });
 
-router.post('/', upload.single('image'), (req, res) => {
+router.post("/", upload.single("image"), (req, res) => {
   // console.log(req.file)
   res.send(`/uploads/${req.file.filename}`);
   // res.send(`/${req.file.path}`);
