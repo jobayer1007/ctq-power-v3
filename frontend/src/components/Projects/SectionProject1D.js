@@ -1,8 +1,8 @@
-import React from 'react';
-import parse from 'html-react-parser';
+import React from "react";
+import parse from "html-react-parser";
 
-import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const SectionProject1D = ({ project }) => {
   const navigate = useNavigate();
@@ -12,39 +12,41 @@ const SectionProject1D = ({ project }) => {
   };
 
   return (
-    <div id='projects' className='basic-2 bg-white mb-3'>
-      <div className='container'>
-        <div className='row'>
-          <div className='col-lg-6 col-xl-5'>
-            <div className='text-container'>
+    <div id="projects" className="basic-2 bg-white mb-3">
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-6 col-xl-5">
+            <div className="text-container">
               <Link to={`/project/${project.subMenuId}`}>
                 <h2>{project.title}</h2>
               </Link>
-              {parse(project.details)}
+              <p>
+                {parse(project.details.split(/\s+/).slice(0, 20).join(" "))}...
+              </p>
               <button
-                className='read-more no-line green btn'
+                className="read-more no-line green btn"
                 onClick={openLinkHandler}
               >
-                Learn more <span className='fas fa-long-arrow-alt-right' />
+                Learn more <span className="fas fa-long-arrow-alt-right" />
               </button>
-            </div>{' '}
+            </div>{" "}
             {/* end of text-container */}
-          </div>{' '}
+          </div>{" "}
           {/* end of col */}
-          <div className='col-lg-6 col-xl-7'>
-            <div className='image-container'>
+          <div className="col-lg-6 col-xl-7">
+            <div className="image-container">
               <img
-                className='img-fluid'
+                className="img-fluid"
                 src={project.image}
-                alt='alternative'
+                alt="alternative"
               />
-            </div>{' '}
+            </div>{" "}
             {/* end of image-container */}
-          </div>{' '}
+          </div>{" "}
           {/* end of col */}
-        </div>{' '}
+        </div>{" "}
         {/* end of row */}
-      </div>{' '}
+      </div>{" "}
       {/* end of container */}
     </div>
   );

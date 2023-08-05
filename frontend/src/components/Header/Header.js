@@ -1,37 +1,37 @@
-import React from 'react';
+import React from "react";
 
 const Header = () => {
   return (
     <>
       {/* Header */}
-      <header id='header' className='header'>
-        <div className='container'>
-          <div className='row'>
-            <div className='col-lg-6'>
-              <h1 className='h1-large'>
+      <header id="header" className="header">
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-6">
+              <h1 className="h1-large">
                 PLAN
                 <br /> DESIGN
-                <br /> Evaluate Reliability
+                <br /> DELIVER
               </h1>
-            </div>{' '}
+            </div>{" "}
             {/* end of col */}
-            <div className='col-lg-6'>
-              <div className='button-container'>
-                <a className='btn-solid-lg page-scroll' href='#intro'>
+            <div className="col-lg-6">
+              <div className="button-container">
+                <a className="btn-solid-lg page-scroll" href="#intro">
                   Discover
                 </a>
-                <a className='btn-outline-lg page-scroll' href='#contact'>
+                <a className="btn-outline-lg page-scroll" href="#contact">
                   Contact
                 </a>
-              </div>{' '}
+              </div>{" "}
               {/* end of button-container */}
-            </div>{' '}
+            </div>{" "}
             {/* end of col */}
-          </div>{' '}
+          </div>{" "}
           {/* end of row */}
-        </div>{' '}
+        </div>{" "}
         {/* end of container */}
-      </header>{' '}
+      </header>{" "}
       {/* end of header */}
       {/* end of header */}
     </>
